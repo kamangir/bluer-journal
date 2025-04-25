@@ -13,6 +13,7 @@ setup(
         f"{NAME}.classes",
         f"{NAME}.help",
         f"{NAME}.utils",
+        f"{NAME}.utils.sync",
     ],
     include_package_data=True,
     package_data={

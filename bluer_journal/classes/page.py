@@ -13,6 +13,8 @@ class JournalPage:
         title: str,
         verbose: bool = False,
     ):
+        assert title
+
         self.title = title
         self.load(verbose)
 
