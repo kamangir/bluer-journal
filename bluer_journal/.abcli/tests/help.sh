@@ -17,12 +17,6 @@ function test_bluer_journal_help() {
         "@journal test" \
         "@journal test list" \
         \
-        "@journal leaf" \
-        "@journal node" \
-        "@journal node leaf" \
-        \
-        "@journal task" \
-        \
         "bluer_journal"; do
         bluer_ai_eval ,$options \
             bluer_ai_help $module
@@ -33,4 +27,3 @@ function test_bluer_journal_help() {
 
     return 0
 }
-
