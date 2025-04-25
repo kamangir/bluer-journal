@@ -19,7 +19,7 @@ function bluer_journal_add() {
 
     local message=$2
     if [[ -z "$message" ]]; then
-        abcli_log_error "@journal: add: message is empty."
+        bluer_ai_log_error "@journal: add: message is empty."
         return 1
     fi
 
