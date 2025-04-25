@@ -1,6 +1,6 @@
 # 📜 bluer-journal
 
-📜 `@journal` is a journal with command access, maintained in a github repo.  
+📜 `@journal` with command access maintained in a github repo.  
 
 ---
 
