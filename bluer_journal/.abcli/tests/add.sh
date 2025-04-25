@@ -5,5 +5,6 @@ function test_bluer_journal_add() {
 
     bluer_journal_add \
         ~push,$options \
+        "this is a test" \
         --page test
 }
