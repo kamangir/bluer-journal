@@ -10,6 +10,8 @@ setup(
     description=DESCRIPTION,
     packages=[
         NAME,
+        f"{NAME}.add",
+        f"{NAME}.classes",
         f"{NAME}.help",
     ],
     include_package_data=True,

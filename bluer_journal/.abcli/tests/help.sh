@@ -7,6 +7,8 @@ function test_bluer_journal_help() {
     for module in \
         "@journal" \
         \
+        "@journal add" \
+        \
         "@journal pypi" \
         "@journal pypi browse" \
         "@journal pypi build" \

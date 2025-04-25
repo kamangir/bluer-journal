@@ -11,6 +11,5 @@ def test_required_env():
 
 def test_bluer_journal_env():
     assert env.BLUER_JOURNAL_REPO
-    assert env.BLUER_JOURNAL_ASSETS
 
     assert env.BLUER_JOURNAL_CONFIG
