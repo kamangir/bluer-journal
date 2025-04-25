@@ -13,6 +13,8 @@ function test_bluer_journal_help() {
         "@journal git pull" \
         "@journal git push" \
         \
+        "@journal open" \
+        \
         "@journal pypi" \
         "@journal pypi browse" \
         "@journal pypi build" \

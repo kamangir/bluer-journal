@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 function bluer_journal() {
-    local task=$1
+    local task=${1:-open}
 
     bluer_ai_generic_task \
         plugin=bluer_journal,task=$task \
