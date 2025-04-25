@@ -16,6 +16,7 @@ def help_add(
 
     args = [
         "[--page <YYYY-MM-DD>]",
+        "[--verbose 1]",
     ]
 
     return show_usage(

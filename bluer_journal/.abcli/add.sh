@@ -6,7 +6,7 @@ function bluer_journal_add() {
     local do_pull=$(bluer_ai_option_int "$options" pull 1)
     local do_push=$(bluer_ai_option_int "$options" push 1)
 
-    bluer_journal_validate
+    bluer_journal_check
     [[ $? -ne 0 ]] && return 1
 
     if [[ "$do_pull" == 1 ]]; then
