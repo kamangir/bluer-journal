@@ -15,7 +15,7 @@ parser.add_argument(
     type=str,
 )
 parser.add_argument(
-    "--page",
+    "--title",
     type=str,
     default="",
 )
@@ -35,7 +35,7 @@ args = parser.parse_args()
 
 success = add_message(
     message=args.message,
-    page=args.page,
+    title=args.title,
     todo=args.todo,
     verbose=args.verbose == 1,
 )

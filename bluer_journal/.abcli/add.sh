@@ -11,7 +11,7 @@ function bluer_journal_add() {
 
     if [[ "$do_pull" == 1 ]]; then
         bluer_ai_git \
-            $BLUER_JOURNAL_REPO \
+            $BLUER_JOURNAL_REPO.wiki \
             pull \
             ~all
         [[ $? -ne 0 ]] && return 1
@@ -31,7 +31,7 @@ function bluer_journal_add() {
 
     if [[ "$do_pull" == 1 ]]; then
         bluer_ai_git \
-            $BLUER_JOURNAL_REPO \
+            $BLUER_JOURNAL_REPO.wiki \
             push \
             "@journal add" \
             ~increment_version

@@ -15,7 +15,7 @@ def help_add(
     )
 
     args = [
-        "[--page <YYYY-MM-DD>]",
+        "[--title <YYYY-MM-DD>]",
         "[--verbose 1]",
     ]
 
