@@ -22,15 +22,21 @@ def help_pull(
     )
 
 
+def push_options(mono: bool):
+    return xtra("~calendar,~push,~sync", mono=mono)
+
+
 def help_push(
     tokens: List[str],
     mono: bool,
 ) -> str:
+
     return show_usage(
         [
             "@journal",
             "git",
             "push",
+            f"[{push_options(mono=mono)}]",
         ],
         "journal -> git.",
         mono=mono,

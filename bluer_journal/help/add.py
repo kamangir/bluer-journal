@@ -2,6 +2,8 @@ from typing import List
 
 from bluer_options.terminal import show_usage, xtra
 
+from bluer_journal.help.git import push_options
+
 
 def help_add(
     tokens: List[str],
@@ -9,7 +11,7 @@ def help_add(
 ) -> str:
     options = "".join(
         [
-            xtra("~pull,~push,", mono=mono),
+            xtra("~pull,", mono=mono),
             "todo",
         ]
     )
@@ -25,6 +27,7 @@ def help_add(
             "add",
             f"[{options}]",
             "<message>",
+            f"[{push_options(mono=mono)}]",
         ]
         + args,
         "add to journal.",
