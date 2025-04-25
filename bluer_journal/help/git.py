@@ -2,28 +2,42 @@ from typing import List
 
 from bluer_options.terminal import show_usage, xtra
 
-from bluer_plugin import ALIAS
 
-
-def help_check(
+def help_pull(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = "pull"
+    options = xtra("~pull", mono=mono)
 
     return show_usage(
         [
             "@journal",
             "git",
-            "check",
+            "pull",
             f"[{options}]",
             "[.|<object-name>]",
         ],
-        "pull @journal repo.",
+        "git -> journal.",
+        mono=mono,
+    )
+
+
+def help_push(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    return show_usage(
+        [
+            "@journal",
+            "git",
+            "push",
+        ],
+        "journal -> git.",
         mono=mono,
     )
 
 
 help_functions = {
-    "check": help_check,
+    "pull": help_pull,
+    "push": help_push,
 }

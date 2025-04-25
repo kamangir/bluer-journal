@@ -10,7 +10,8 @@ function test_bluer_journal_help() {
         "@journal add" \
         \
         "@journal git" \
-        "@journal git check" \
+        "@journal git pull" \
+        "@journal git push" \
         \
         "@journal pypi" \
         "@journal pypi browse" \

@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-function bluer_journal_git_check() {
+function bluer_journal_git_pull() {
     local options=$1
     local do_pull=$(bluer_ai_option_int "$options" pull 1)
 

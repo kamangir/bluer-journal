@@ -6,7 +6,7 @@ function bluer_journal_add() {
     local do_pull=$(bluer_ai_option_int "$options" pull 1)
     local do_push=$(bluer_ai_option_int "$options" push 1)
 
-    bluer_journal_git_check pull=$do_pull
+    bluer_journal_git_pull pull=$do_pull
     [[ $? -ne 0 ]] && return 1
 
     local message=$2
@@ -23,10 +23,6 @@ function bluer_journal_add() {
     [[ $? -ne 0 ]] && return 1
 
     if [[ "$do_push" == 1 ]]; then
-        bluer_ai_git \
-            $BLUER_JOURNAL_REPO.wiki \
-            push \
-            "@journal add" \
-            ~increment_version
+        bluer_journal_git_push
     fi
 }
