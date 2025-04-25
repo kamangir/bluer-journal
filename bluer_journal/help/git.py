@@ -15,7 +15,6 @@ def help_pull(
             "git",
             "pull",
             f"[{options}]",
-            "[.|<object-name>]",
         ],
         "git -> journal.",
         mono=mono,
