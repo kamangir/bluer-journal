@@ -5,7 +5,7 @@
 ```mermaid
 graph LR
 
-    journal_add["@journal add - <message>"]
+    journal_add["@journal add~~- <message>"]
 
     journal_git_pull["@journal git pull"]
 
