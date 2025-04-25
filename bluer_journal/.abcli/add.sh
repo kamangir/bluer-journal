@@ -29,7 +29,7 @@ function bluer_journal_add() {
         "${@:3}"
     [[ $? -ne 0 ]] && return 1
 
-    if [[ "$do_pull" == 1 ]]; then
+    if [[ "$do_push" == 1 ]]; then
         bluer_ai_git \
             $BLUER_JOURNAL_REPO.wiki \
             push \
