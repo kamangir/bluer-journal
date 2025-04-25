@@ -1,6 +1,9 @@
 #! /usr/bin/env bash
 
-function bluer_journal_check() {
+function bluer_journal_git_check() {
+    local options=$1
+    local do_pull=$(bluer_ai_option_int "$options" pull 1)
+
     local repo_name
     for repo_name in \
         $BLUER_JOURNAL_REPO \
@@ -18,5 +21,11 @@ function bluer_journal_check() {
         fi
     done
 
-    return 0
+    [[ "$do_pull" == 0 ]] &&
+        return 0
+
+    bluer_ai_git \
+        $BLUER_JOURNAL_REPO.wiki \
+        pull \
+        ~all
 }

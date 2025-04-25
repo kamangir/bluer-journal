@@ -6,16 +6,8 @@ function bluer_journal_add() {
     local do_pull=$(bluer_ai_option_int "$options" pull 1)
     local do_push=$(bluer_ai_option_int "$options" push 1)
 
-    bluer_journal_check
+    bluer_journal_git_check pull=$do_pull
     [[ $? -ne 0 ]] && return 1
-
-    if [[ "$do_pull" == 1 ]]; then
-        bluer_ai_git \
-            $BLUER_JOURNAL_REPO.wiki \
-            pull \
-            ~all
-        [[ $? -ne 0 ]] && return 1
-    fi
 
     local message=$2
     if [[ -z "$message" ]]; then
