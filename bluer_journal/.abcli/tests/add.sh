@@ -4,7 +4,8 @@ function test_bluer_journal_add() {
     local options=$1
 
     bluer_journal_add \
-        ~push,$options \
-        "this is a test" \
+        ,$options \
+        "remind me that Mathematics is the voice of God." \
+        ~push, \
         --title test
 }
