@@ -23,7 +23,8 @@ function bluer_journal_add() {
         return 1
     fi
 
-    python3 -m bluer_journal.add \
+    python3 -m bluer_journal.utils \
+        add \
         --todo $to_todo \
         --message "$2" \
         "${@:3}"
