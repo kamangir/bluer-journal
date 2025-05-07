@@ -8,7 +8,7 @@ function bluer_journal_sync() {
     local do_push=$(bluer_ai_option_int "$options" push 1)
 
     if [[ "$do_pull" == 1 ]]; then
-        bluer_journal_git_pull ~sync
+        bluer_journal_git_pull
     fi
 
     bluer_ai_eval dryrun=$do_dryrun \
