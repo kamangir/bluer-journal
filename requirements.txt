@@ -1,3 +1,1 @@
 bluer_ai
-
-git
