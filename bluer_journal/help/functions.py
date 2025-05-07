@@ -14,12 +14,15 @@ def help_sync(
 ) -> str:
     options = xtra("~checklist,dryrun,~push", mono=mono)
 
+    args = ["[--verbose 1]"]
+
     return show_usage(
         [
             "@journal",
             "sync",
             f"[{options}]",
-        ],
+        ]
+        + args,
         "sync journal.",
         mono=mono,
     )

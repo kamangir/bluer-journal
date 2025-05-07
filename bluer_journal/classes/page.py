@@ -72,11 +72,12 @@ class JournalPage:
 
         if self.verbose:
             logger.info(
-                "loaded {} section(s) from {}".format(
+                "loaded {} section(s) from {}: {}".format(
                     len(
                         self.sections,
-                        self.filename,
-                    )
+                    ),
+                    self.title,
+                    ", ".join(self.sections.keys()),
                 )
             )
 

@@ -3,6 +3,7 @@ import os
 import glob
 
 from bluer_objects.env import abcli_path_git
+from bluer_objects import file
 
 from bluer_journal.env import BLUER_JOURNAL_REPO
 from bluer_journal.logger import logger
@@ -11,14 +12,13 @@ from bluer_journal.logger import logger
 class Journal:
     def __init__(self): ...
 
-    @property
     def list_of_pages(
         self,
         log: bool = False,
     ) -> List[str]:
         list_of_pages = sorted(
             [
-                filename
+                file.name(filename)
                 for filename in glob.glob(
                     os.path.join(
                         self.path,
