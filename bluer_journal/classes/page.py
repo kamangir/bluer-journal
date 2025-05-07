@@ -33,13 +33,24 @@ class JournalPage:
         )
 
     def generate(self):
-        self.content = []
+        content_ = []
 
         for section_name, lines in self.sections.items():
             if section_name:
-                self.content.append(f"# {section_name}")
+                content_.append(f"# {section_name}")
 
-            self.content += lines + [""]
+            content_ += lines + [""]
+
+        self.content = []
+        prev_blank = False
+        for line in content_:
+            if line.strip() == "":
+                if not prev_blank:
+                    self.content.append(line)
+                prev_blank = True
+            else:
+                self.content.append(line)
+                prev_blank = False
 
     def list_of_todos(
         self,
