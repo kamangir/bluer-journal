@@ -10,7 +10,7 @@ function test_bluer_journal_help() {
         "@journal add" \
         \
         "@journal git" \
-        "@journal cd" \
+        "@journal git cd" \
         "@journal git pull" \
         "@journal git push" \
         "@journal sync" \
