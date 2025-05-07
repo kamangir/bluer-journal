@@ -12,3 +12,4 @@ def test_journal_page():
     assert page.save()
 
     list_of_todos = page.list_of_todos()
+    assert isinstance(list_of_todos, list)
