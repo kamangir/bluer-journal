@@ -1,7 +1,8 @@
 from bluer_journal.classes.page import JournalPage
+from bluer_journal.tests.fixtures import journal_checkout
 
 
-def test_journal_page():
+def test_journal_page(journal_checkout):
     page = JournalPage(
         title="Home",
         load=True,
