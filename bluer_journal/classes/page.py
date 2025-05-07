@@ -39,7 +39,7 @@ class JournalPage:
             if section_name:
                 self.content.append(f"# {section_name}")
 
-            self.content += lines
+            self.content += lines + [""]
 
     def list_of_todos(
         self,
@@ -109,6 +109,7 @@ class JournalPage:
 
     def save(
         self,
+        log: bool = True,
         generate: bool = True,
     ) -> bool:
         if generate:
@@ -117,5 +118,5 @@ class JournalPage:
         return file.save_text(
             self.filename,
             self.content,
-            log=self.verbose,
+            log=log,
         )

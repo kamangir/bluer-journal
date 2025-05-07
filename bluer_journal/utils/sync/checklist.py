@@ -12,18 +12,10 @@ from bluer_journal.logger import logger
 NAME = module.name(__file__, NAME)
 
 
-def sync_checklist(
+def find_todo_items(
     verbose: bool = False,
-) -> bool:
-    logger.info(f"{NAME}.sync_checklist ...")
-
+) -> Dict[str, str]:
     list_of_pages = journal.list_of_pages(log=verbose)
-
-    Home = JournalPage(
-        title="Home",
-        load=True,
-        verbose=verbose,
-    )
 
     dict_of_todos: Dict[str, str] = {}
     for page_title in tqdm(list_of_pages):
@@ -45,4 +37,25 @@ def sync_checklist(
     for index, (todo_item, page_title) in enumerate(dict_of_todos.items()):
         logger.info(f"#{index+1: 3d} - {todo_item} ({page_title})")
 
-    return True
+    return dict_of_todos
+
+
+def sync_checklist(
+    verbose: bool = False,
+) -> bool:
+    logger.info(f"{NAME}.sync_checklist ...")
+
+    Home = JournalPage(
+        title="Home",
+        load=True,
+        verbose=verbose,
+    )
+
+    dict_of_todos = find_todo_items(verbose=True)
+
+    Home.sections["todo"] = [
+        "- [ ] [[{}]]: {}".format(page_title, todo_item)
+        for todo_item, page_title in dict_of_todos.items()
+    ]
+
+    return Home.save()
