@@ -41,9 +41,33 @@ class JournalPage:
 
             self.content += lines
 
+    def list_of_todos(
+        self,
+        log: bool = True,
+    ) -> List[str]:
+        todos_all = [
+            line.split("- [ ]", 1)[1].strip()
+            for line in self.content
+            if line.startswith("- [ ]")
+        ]
+
+        todos: List[str] = []
+        for todo_item in todos_all:
+            todos += [todo_item]
+            if "waiting" in todo_item:
+                break
+
+        if log and todos:
+            logger.info(f"{len(todos)} todo(s)")
+            for index, todo_item in enumerate(todos):
+                logger.info(f"#{index+1: 2d}. {todo_item}")
+
+        return todos
+
     def load(
         self,
         parse: bool = True,
+        log: bool = True,
     ) -> bool:
         success, self.content = file.load_text(
             self.filename,
@@ -70,7 +94,7 @@ class JournalPage:
         if not self.sections[""]:
             del self.sections[""]
 
-        if self.verbose:
+        if log:
             logger.info(
                 "loaded {} section(s) from {}: {}".format(
                     len(

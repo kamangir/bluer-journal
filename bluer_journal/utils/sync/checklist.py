@@ -1,5 +1,5 @@
-import re
-import calendar
+from tqdm import tqdm
+from typing import Dict
 
 from blueness import module
 
@@ -25,6 +25,24 @@ def sync_checklist(
         verbose=verbose,
     )
 
-    logger.info("🪄")
+    dict_of_todos: Dict[str, str] = {}
+    for page_title in tqdm(list_of_pages):
+        if page_title == "Home":
+            continue
+
+        page = JournalPage(
+            title=page_title,
+            load=True,
+            verbose=verbose,
+        )
+
+        for todo_item in page.list_of_todos():
+            dict_of_todos[todo_item] = page_title
+
+    dict_of_todos = dict(sorted(dict_of_todos.items()))
+
+    logger.info(f"{len(dict_of_todos)} todo(s).")
+    for index, (todo_item, page_title) in enumerate(dict_of_todos.items()):
+        logger.info(f"#{index+1: 3d} - {todo_item} ({page_title})")
 
     return True

@@ -10,3 +10,5 @@ def test_journal_page():
     page.generate()
 
     assert page.save()
+
+    list_of_todos = page.list_of_todos()

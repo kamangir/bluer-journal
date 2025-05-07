@@ -12,7 +12,7 @@ def help_sync(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("~checklist,dryrun,~push", mono=mono)
+    options = xtra("~checklist,dryrun,~pull,~push", mono=mono)
 
     args = ["[--verbose 1]"]
 
