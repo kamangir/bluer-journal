@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 function bluer_journal_git() {
-    local task=$1
+    local task=${1:-cd}
 
     local function_name=bluer_journal_git_$task
     if [[ $(type -t $function_name) == "function" ]]; then
