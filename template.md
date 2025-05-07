@@ -5,7 +5,7 @@
 ```mermaid
 graph LR
 
-    journal_add["@journal add~~- <message>"]
+    journal_git_cd["@journal git cd"]
 
     journal_git_pull["@journal git pull"]
 
@@ -13,12 +13,12 @@ graph LR
 
     journal_open["@journal open"]
 
+    journal_sync["@journal sync"]
+
     journal["📜 journal"]:::folder
     git["🗄️ git"]:::folder
 
-    git --> journal_add
-    journal_add --> journal
-    journal_add --> git
+    journal_git_cd --> git
 
     git --> journal_git_pull
     journal_git_pull --> journal
@@ -27,6 +27,10 @@ graph LR
     journal_git_push --> git
 
     journal_open --> git
+
+    journal --> journal_sync
+    journal_sync --> journal
+    journal_sync --> git
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```

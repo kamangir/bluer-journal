@@ -7,11 +7,11 @@ function test_bluer_journal_help() {
     for module in \
         "@journal" \
         \
-        "@journal add" \
-        \
         "@journal git" \
+        "@journal git cd" \
         "@journal git pull" \
         "@journal git push" \
+        "@journal sync" \
         \
         "@journal open" \
         \

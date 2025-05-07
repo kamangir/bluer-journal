@@ -3,6 +3,21 @@ from typing import List
 from bluer_options.terminal import show_usage, xtra
 
 
+def help_cd(
+    tokens: List[str],
+    mono: bool,
+) -> str:
+    return show_usage(
+        [
+            "@journal",
+            "git",
+            "cd",
+        ],
+        "cd git/journal.",
+        mono=mono,
+    )
+
+
 def help_pull(
     tokens: List[str],
     mono: bool,
@@ -22,7 +37,7 @@ def help_pull(
 
 
 def push_options(mono: bool):
-    return xtra("~push,~sync", mono=mono)
+    return xtra("dryrun,~push,~sync", mono=mono)
 
 
 def help_push(
@@ -43,6 +58,7 @@ def help_push(
 
 
 help_functions = {
+    "cd": help_cd,
     "pull": help_pull,
     "push": help_push,
 }

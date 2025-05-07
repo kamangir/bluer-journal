@@ -12,6 +12,7 @@ setup(
         NAME,
         f"{NAME}.classes",
         f"{NAME}.help",
+        f"{NAME}.tests",
         f"{NAME}.utils",
         f"{NAME}.utils.sync",
     ],
