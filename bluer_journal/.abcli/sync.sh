@@ -10,6 +10,7 @@ function bluer_journal_sync() {
         python3 -m bluer_journal.utils \
         sync \
         --do_checklist $do_checklist \
+        --verbose 1 \
         "${@:2}"
 
     if [[ "$do_push" == 1 ]]; then

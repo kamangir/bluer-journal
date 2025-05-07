@@ -13,6 +13,8 @@ graph LR
 
     journal_open["@journal open"]
 
+    journal_sync["@journal sync"]
+
     journal["📜 journal"]:::folder
     git["🗄️ git"]:::folder
 
@@ -25,6 +27,10 @@ graph LR
     journal_git_push --> git
 
     journal_open --> git
+
+    journal --> journal_sync
+    journal_sync --> journal
+    journal_sync --> git
 
     classDef folder fill:#999,stroke:#333,stroke-width:2px;
 ```
