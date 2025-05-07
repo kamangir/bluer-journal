@@ -5,7 +5,7 @@
 ```mermaid
 graph LR
 
-    journal_add["@journal add~~- <message>"]
+    journal_git_cd["@journal git cd"]
 
     journal_git_pull["@journal git pull"]
 
@@ -16,9 +16,7 @@ graph LR
     journal["📜 journal"]:::folder
     git["🗄️ git"]:::folder
 
-    git --> journal_add
-    journal_add --> journal
-    journal_add --> git
+    journal_git_cd --> git
 
     git --> journal_git_pull
     journal_git_pull --> journal

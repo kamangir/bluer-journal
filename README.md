@@ -5,7 +5,7 @@
 ```mermaid
 graph LR
 
-    journal_add["@journal<br>add -<br>&lt;message&gt;"]
+    journal_git_cd["@journal<br>git<br>cd"]
 
     journal_git_pull["@journal<br>git<br>pull"]
 
@@ -16,9 +16,7 @@ graph LR
     journal["📜 journal"]:::folder
     git["🗄️ git"]:::folder
 
-    git --> journal_add
-    journal_add --> journal
-    journal_add --> git
+    journal_git_cd --> git
 
     git --> journal_git_pull
     journal_git_pull --> journal
@@ -40,4 +38,4 @@ graph LR
 
 [![pylint](https://github.com/kamangir/bluer-journal/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/bluer-journal/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/bluer-journal/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/bluer-journal/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/bluer-journal/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/bluer-journal/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/bluer-journal.svg)](https://pypi.org/project/bluer-journal/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/bluer-journal)](https://pypistats.org/packages/bluer-journal)
 
-built by 🌀 [`bluer README`](https://github.com/kamangir/bluer-objects/tree/main/bluer_objects/README), based on 📜 [`bluer_journal-5.32.1`](https://github.com/kamangir/bluer-journal).
+built by 🌀 [`bluer README`](https://github.com/kamangir/bluer-objects/tree/main/bluer_objects/README), based on 📜 [`bluer_journal-5.33.1`](https://github.com/kamangir/bluer-journal).
