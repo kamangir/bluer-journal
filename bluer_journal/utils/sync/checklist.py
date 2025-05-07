@@ -53,7 +53,7 @@ def sync_checklist(
 
     dict_of_todos = find_todo_items(verbose=True)
 
-    Home.sections["todo"] = [
+    Home.sections["todo (auto)"] = [
         "- [ ] [[{}]]: {}".format(page_title, todo_item)
         for todo_item, page_title in dict_of_todos.items()
     ]

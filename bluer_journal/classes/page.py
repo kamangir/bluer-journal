@@ -35,7 +35,7 @@ class JournalPage:
     def generate(self):
         content_ = []
 
-        for section_name, lines in self.sections.items():
+        for section_name, lines in sorted(self.sections.items()):
             if section_name:
                 content_.append(f"# {section_name}")
 
