@@ -6,6 +6,7 @@ from bluer_options import string
 
 from bluer_journal import NAME
 from bluer_journal.utils.add import add_message
+from bluer_journal.utils.sync.functions import sync
 from bluer_journal.logger import logger
 
 NAME = module.name(__file__, NAME)
@@ -15,6 +16,12 @@ parser.add_argument(
     "task",
     type=str,
     help="add | sync",
+)
+parser.add_argument(
+    "--do_checklist",
+    type=int,
+    default=1,
+    help="0 |1",
 )
 parser.add_argument(
     "--message",
@@ -55,8 +62,10 @@ if args.task == "add":
         verbose=args.verbose == 1,
     )
 elif args.task == "sync":
-    success = True
-    logger.info("🪄")
+    success = sync(
+        do_checklist=args.do_checklist == 1,
+        verbose=args.verbose == 1,
+    )
 else:
     success = None
 

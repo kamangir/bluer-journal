@@ -13,6 +13,7 @@ function test_bluer_journal_help() {
         "@journal cd" \
         "@journal git pull" \
         "@journal git push" \
+        "@journal sync" \
         \
         "@journal open" \
         \

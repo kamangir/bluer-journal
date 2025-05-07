@@ -37,7 +37,7 @@ def help_pull(
 
 
 def push_options(mono: bool):
-    return xtra("~push,~sync", mono=mono)
+    return xtra("dryrun,~push,~sync", mono=mono)
 
 
 def help_push(
