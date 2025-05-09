@@ -56,17 +56,18 @@ class JournalPage:
         self,
         log: bool = True,
     ) -> List[str]:
-        todos_all = [
-            line.split("- [ ]", 1)[1].strip()
-            for line in self.content
-            if line.startswith("- [ ]")
-        ]
-
         todos: List[str] = []
-        for todo_item in todos_all:
-            todos += [todo_item]
-            if "waiting" in todo_item:
-                break
+        for section_content in self.sections.values():
+            todos_all = [
+                line.split("- [ ]", 1)[1].strip()
+                for line in section_content
+                if line.startswith("- [ ]")
+            ]
+
+            for todo_item in todos_all:
+                todos += [todo_item]
+                if "waiting" in todo_item:
+                    break
 
         if log and todos:
             logger.info(f"{self.title}: {len(todos)} todo(s)")
