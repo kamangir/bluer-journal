@@ -56,6 +56,13 @@ def sync_checklist(
     Home.sections["todo (auto)"] = [
         "- [ ] [[{}]]: {}".format(page_title, todo_item)
         for todo_item, page_title in dict_of_todos.items()
+        if "waiting" not in todo_item
+    ]
+
+    Home.sections["waiting for (auto) 👱"] = [
+        "- [ ] [[{}]]: {}".format(page_title, todo_item)
+        for todo_item, page_title in dict_of_todos.items()
+        if "waiting" in todo_item
     ]
 
     return Home.save()
