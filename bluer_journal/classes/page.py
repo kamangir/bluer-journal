@@ -69,7 +69,7 @@ class JournalPage:
                 break
 
         if log and todos:
-            logger.info(f"{len(todos)} todo(s)")
+            logger.info(f"{self.title}: {len(todos)} todo(s)")
             for index, todo_item in enumerate(todos):
                 logger.info(f"#{index+1: 2d}. {todo_item}")
 
@@ -78,7 +78,6 @@ class JournalPage:
     def load(
         self,
         parse: bool = True,
-        log: bool = True,
     ) -> bool:
         success, self.content = file.load_text(
             self.filename,
@@ -105,9 +104,10 @@ class JournalPage:
         if not self.sections[""]:
             del self.sections[""]
 
-        if log:
+        if self.verbose:
             logger.info(
-                "loaded {} section(s) from {}: {}".format(
+                "{}: {} section(s) from {}: {}".format(
+                    self.title,
                     len(
                         self.sections,
                     ),
