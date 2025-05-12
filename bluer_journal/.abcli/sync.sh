@@ -16,6 +16,12 @@ function bluer_journal_sync() {
         sync \
         --do_checklist $do_checklist \
         "${@:2}"
+    [[ $? -ne 0 ]] && return 1
+
+    bluer_ai_git \
+        $BLUER_JOURNAL_REPO.wiki \
+        diff
+    [[ $? -ne 0 ]] && return 1
 
     if [[ "$do_push" == 1 ]]; then
         bluer_journal_git_push ~sync
