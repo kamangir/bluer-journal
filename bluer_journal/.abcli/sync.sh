@@ -20,7 +20,7 @@ function bluer_journal_sync() {
 
     bluer_ai_git \
         $BLUER_JOURNAL_REPO.wiki \
-        diff
+        --no-pager diff
     [[ $? -ne 0 ]] && return 1
 
     if [[ "$do_push" == 1 ]]; then
