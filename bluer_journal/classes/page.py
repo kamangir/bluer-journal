@@ -23,7 +23,7 @@ class JournalPage:
         self.sections: Dict[str, List[str]] = {}
 
         if load:
-            assert self.load()
+            assert self.load(), f"cannot load {self.title}"
 
     @property
     def filename(self) -> str:
