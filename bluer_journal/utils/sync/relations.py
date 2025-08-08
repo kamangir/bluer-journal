@@ -56,12 +56,6 @@ def sync_relations(
 ) -> bool:
     logger.info(f"{NAME}.sync_relations ...")
 
-    Home = JournalPage(
-        title="Home",
-        load=True,
-        verbose=verbose,
-    )
-
     list_of_pages = journal.list_of_pages(log=verbose)
     for page_title in tqdm(list_of_pages):
         if not link_relations(
