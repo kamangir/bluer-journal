@@ -1,6 +1,7 @@
 from tqdm import tqdm
 from typing import List, Dict, Set
 import re
+from functools import reduce
 
 from blueness import module
 from bluer_objects import file
@@ -63,9 +64,31 @@ def add_relations(
             verbose=verbose,
         )
 
-        page.content = [
-            f": [[{related}]]" for related in list_of_related
-        ] + page.content
+        page.content = (
+            reduce(
+                lambda x, y: x + y,
+                [[f": [[{related}]]", ""] for related in list_of_related],
+                [],
+            )
+            + page.content
+        )
+
+        page.content = reduce(
+            lambda x, y: x + y,
+            [
+                [line, ""]
+                for line in sorted(
+                    [
+                        line
+                        for line in page.content
+                        if re.fullmatch(r": \[\[.+?\]\]", line)
+                    ]
+                )[::-1]
+            ],
+            [],
+        ) + [line for line in page.content if not re.fullmatch(r": \[\[.+?\]\]", line)]
+
+        page.remove_double_blanks()
 
         if not page.save(generate=False):
             return False

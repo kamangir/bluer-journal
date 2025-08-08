@@ -33,24 +33,14 @@ class JournalPage:
         )
 
     def generate(self):
-        content_ = []
-
+        self.content = []
         for section_name, lines in sorted(self.sections.items()):
             if section_name:
-                content_.append(f"# {section_name}")
+                self.content.append(f"# {section_name}")
 
-            content_ += lines + [""]
+            self.content += lines + [""]
 
-        self.content = []
-        prev_blank = False
-        for line in content_:
-            if line.strip() == "":
-                if not prev_blank:
-                    self.content.append(line)
-                prev_blank = True
-            else:
-                self.content.append(line)
-                prev_blank = False
+        self.remove_double_blanks()
 
     def list_of_todos(
         self,
@@ -118,6 +108,20 @@ class JournalPage:
             )
 
         return True
+
+    def remove_double_blanks(self):
+        content_ = [line for line in self.content]
+        self.content = []
+
+        prev_blank = False
+        for line in content_:
+            if line.strip() == "":
+                if not prev_blank:
+                    self.content.append(line)
+                prev_blank = True
+            else:
+                self.content.append(line)
+                prev_blank = False
 
     def save(
         self,
