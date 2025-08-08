@@ -1,5 +1,5 @@
 from tqdm import tqdm
-from typing import List
+from typing import List, Dict, Set
 import re
 
 from blueness import module
@@ -11,6 +11,8 @@ from bluer_journal.logger import logger
 
 
 NAME = module.name(__file__, NAME)
+
+dict_of_relations: Dict[str, List[str]] = {}
 
 
 def link_relations(
@@ -43,18 +45,37 @@ def link_relations(
 
         updated_content.append(f": [[{keyword}]]")
 
-    if updated_content == page.content:
-        return True
+    if updated_content != page.content:
+        page.content = updated_content
+        if not page.save(generate=False):
+            return False
 
-    page.content = updated_content
+    set_of_relations: Set[str] = set()
+    pattern = re.compile(r"\[\[([^\[\]]+)\]\]")
+    for line in page.content:
+        set_of_relations.update(pattern.findall(line))
 
-    return page.save(generate=False)
+    page_title_normalized = page_title.replace("-", " ")
+    list_of_relations = [item.replace("-", " ") for item in list(set_of_relations)]
+    dict_of_relations[page_title_normalized] = list_of_relations
+
+    if verbose and list_of_relations:
+        logger.info(
+            "{} -:-> {}".format(
+                page_title_normalized,
+                ", ".join(list_of_relations),
+            )
+        )
+
+    return True
 
 
 def sync_relations(
     verbose: bool = False,
 ) -> bool:
     logger.info(f"{NAME}.sync_relations ...")
+
+    dict_of_relations = {}
 
     list_of_pages = journal.list_of_pages(log=verbose)
     for page_title in tqdm(list_of_pages):
