@@ -12,9 +12,13 @@ def help_sync(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("~checklist,dryrun,~pull,~push", mono=mono)
+    options = xtra("dryrun,~pull,~push", mono=mono)
 
-    args = ["[--verbose 1]"]
+    args = [
+        "[--checklist 0]",
+        "[--relations 0]",
+        "[--verbose 1]",
+    ]
 
     return show_usage(
         [

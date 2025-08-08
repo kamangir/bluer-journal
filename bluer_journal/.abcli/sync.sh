@@ -3,7 +3,6 @@
 function bluer_journal_sync() {
     local options=$1
     local do_dryrun=$(bluer_ai_option_int "$options" dryrun 0)
-    local do_checklist=$(bluer_ai_option_int "$options" checklist 1)
     local do_pull=$(bluer_ai_option_int "$options" pull 1)
     local do_push=$(bluer_ai_option_int "$options" push 1)
 
@@ -14,7 +13,6 @@ function bluer_journal_sync() {
     bluer_ai_eval dryrun=$do_dryrun \
         python3 -m bluer_journal.utils \
         sync \
-        --do_checklist $do_checklist \
         "${@:2}"
     [[ $? -ne 0 ]] && return 1
 
