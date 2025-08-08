@@ -16,10 +16,16 @@ parser.add_argument(
     help="sync",
 )
 parser.add_argument(
-    "--do_checklist",
+    "--checklist",
     type=int,
     default=1,
-    help="0 |1",
+    help="0 | 1",
+)
+parser.add_argument(
+    "--relations",
+    type=int,
+    default=1,
+    help="0 | 1",
 )
 parser.add_argument(
     "--verbose",
@@ -32,7 +38,8 @@ args = parser.parse_args()
 success = False
 if args.task == "sync":
     success = sync(
-        do_checklist=args.do_checklist == 1,
+        checklist=args.checklist == 1,
+        relations=args.relations == 1,
         verbose=args.verbose == 1,
     )
 else:

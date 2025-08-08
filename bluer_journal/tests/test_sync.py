@@ -4,6 +4,7 @@ from bluer_journal.tests.fixtures import journal_checkout
 
 def test_sync(journal_checkout):
     assert sync(
-        do_checklist=True,
+        checklist=True,
+        relations=True,
         verbose=True,
     )
