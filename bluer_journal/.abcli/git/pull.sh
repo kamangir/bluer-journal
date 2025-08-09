@@ -19,7 +19,7 @@ function bluer_journal_git_pull() {
                 pushd $abcli_path_git >/dev/null
                 if [[ "$is_webhook" == 1 ]]; then
                     bluer_ai_eval - \
-                        git clone https://x-access-token:$BLUER_AI_GITHUB_TOKEN@github.com/$repo_name.git wiki
+                        git clone https://x-access-token:$BLUER_AI_GITHUB_TOKEN@github.com/$repo_name.git
                 else
                     bluer_ai_eval - \
                         git clone https://github.com/kamangir/$repo_name.git
