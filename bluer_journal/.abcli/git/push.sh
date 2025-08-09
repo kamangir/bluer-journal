@@ -16,8 +16,14 @@ function bluer_journal_git_push() {
 
     if [[ "$do_push" == 1 ]]; then
         if [[ "$is_webhook" == 1 ]]; then
+            pushd $abcli_path_git/$BLUER_JOURNAL_REPO.wiki >/dev/null
+            [[ $? -ne 0 ]] && return 1
+
             bluer_ai_eval dryrun=$do_dryrun \
                 git push "https://$BLUER_AI_GITHUB_TOKEN@github.com/kamangir/$BLUER_JOURNAL_REPO.wiki.git"
+            [[ $? -ne 0 ]] && return 1
+
+            popd >/dev/null
         else
             bluer_ai_git \
                 $BLUER_JOURNAL_REPO.wiki \
