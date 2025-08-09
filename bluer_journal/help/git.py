@@ -40,8 +40,16 @@ def help_pull(
     )
 
 
-def push_options(mono: bool):
-    return xtra("dryrun,~push,~sync", mono=mono)
+def push_options(
+    mono: bool,
+    cascade: bool = False,
+):
+    return "".join(
+        ([] if cascade else [xtra("dryrun,", mono=mono)])
+        + [xtra("~push", mono=mono)]
+        + ([] if cascade else [xtra(",~sync", mono=mono)])
+        + [xtra(",webhook", mono=mono)]
+    )
 
 
 def help_push(

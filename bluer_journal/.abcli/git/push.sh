@@ -7,7 +7,9 @@ function bluer_journal_git_push() {
     local do_sync=$(bluer_ai_option_int "$options" sync 1)
 
     if [[ "$do_sync" == 1 ]]; then
-        bluer_journal_sync ~push,dryrun=$do_dryrun
+        bluer_journal_sync \
+            dryrun=$do_dryrun - \
+            ~push
         [[ $? -ne 0 ]] && return 1
     fi
 
@@ -15,6 +17,7 @@ function bluer_journal_git_push() {
         bluer_ai_git \
             $BLUER_JOURNAL_REPO.wiki \
             push \
-            "@journal git push"
+            "@journal git push" \
+            ~increment_version
     fi
 }
