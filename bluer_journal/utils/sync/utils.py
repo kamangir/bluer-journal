@@ -25,14 +25,16 @@ def reformat(
         )
 
         page.content = (
-            [
-                line
-                for line in page.content
-                if re.fullmatch(
-                    r"- \[\[.+?\]\]",
-                    line,
-                )
-            ]
+            sorted(
+                [
+                    line
+                    for line in page.content
+                    if re.fullmatch(
+                        r"- \[\[.+?\]\]",
+                        line,
+                    )
+                ]
+            )
             + [""]
             + [
                 line
