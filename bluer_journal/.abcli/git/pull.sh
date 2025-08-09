@@ -3,6 +3,7 @@
 function bluer_journal_git_pull() {
     local options=$1
     local do_pull=$(bluer_ai_option_int "$options" pull 1)
+    local is_webhook=$(bluer_ai_option_int "$webhook" webhook 0)
 
     local repo_name
     for repo_name in \
@@ -11,7 +12,11 @@ function bluer_journal_git_pull() {
         if [[ ! -d "$abcli_path_git/$repo_name" ]]; then
             if [[ "$abcli_is_github_workflow" == true ]]; then
                 pushd $abcli_path_git >/dev/null
-                git clone https://github.com/kamangir/$repo_name.git
+                if [[ "$is_webhook" == 1 ]]; then
+                    git clone https://x-access-token:$GITHUB_TOKEN@github.com/$repo_name.wiki.git wiki
+                else
+                    git clone https://github.com/kamangir/$repo_name.git
+                fi
                 [[ $? -ne 0 ]] && return 1
                 popd >/dev/null
             else

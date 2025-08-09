@@ -18,11 +18,15 @@ def help_cd(
     )
 
 
+def pull_options(mono: bool):
+    return xtra("~pull,webhook", mono=mono)
+
+
 def help_pull(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("~pull", mono=mono)
+    options = pull_options(mono=mono)
 
     return show_usage(
         [
