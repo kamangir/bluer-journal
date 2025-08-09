@@ -3,7 +3,7 @@
 function bluer_journal_git_pull() {
     local options=$1
     local do_pull=$(bluer_ai_option_int "$options" pull 1)
-    local is_webhook=$(bluer_ai_option_int "$webhook" webhook 0)
+    local is_webhook=$(bluer_ai_option_int "$options" webhook 0)
 
     if [[ -z "$BLUER_JOURNAL_REPO" ]]; then
         bluer_ai_log_error "BLUER_JOURNAL_REPO is not set."
