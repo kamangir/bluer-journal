@@ -15,7 +15,6 @@ function bluer_journal_git_push() {
         bluer_ai_git \
             $BLUER_JOURNAL_REPO.wiki \
             push \
-            "@journal git push" \
-            ~increment_version
+            "@journal git push"
     fi
 }
