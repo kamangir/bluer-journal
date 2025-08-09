@@ -1,7 +1,6 @@
 from tqdm import tqdm
 from typing import List, Dict, Set
 import re
-from functools import reduce
 
 from blueness import module
 from bluer_objects import file
@@ -9,6 +8,8 @@ from bluer_objects import file
 from bluer_journal import NAME
 from bluer_journal.classes.page import JournalPage
 from bluer_journal.classes.journal import journal
+from bluer_journal.utils.sync.utils import reformat
+
 from bluer_journal.logger import logger
 
 
@@ -55,6 +56,7 @@ def add_relations(
             logger.error(
                 "similar keywords: {}".format(", ".join(list_of_similar_relations))
             )
+
             return False
 
     for relation, list_of_related in tqdm(dict_of_relations_inverse.items()):
@@ -64,29 +66,9 @@ def add_relations(
             verbose=verbose,
         )
 
-        page.content = (
-            reduce(
-                lambda x, y: x + y,
-                [[f": [[{related}]]", ""] for related in list_of_related],
-                [],
-            )
-            + page.content
-        )
-
-        page.content = reduce(
-            lambda x, y: x + y,
-            [
-                [line, ""]
-                for line in sorted(
-                    [
-                        line
-                        for line in page.content
-                        if re.fullmatch(r": \[\[.+?\]\]", line)
-                    ]
-                )[::-1]
-            ],
-            [],
-        ) + [line for line in page.content if not re.fullmatch(r": \[\[.+?\]\]", line)]
+        page.content = [
+            f"- [[{related}]]" for related in list_of_related
+        ] + page.content
 
         page.remove_double_blanks()
 
@@ -168,7 +150,10 @@ def sync_relations(
         ):
             return False
 
-    return add_relations(
+    if not add_relations(
         dict_of_relations=dict_of_relations,
         verbose=verbose,
-    )
+    ):
+        return False
+
+    return reformat(verbose=verbose)
