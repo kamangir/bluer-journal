@@ -5,6 +5,7 @@ from bluer_ai.help.generic import help_functions as generic_help_functions
 
 from bluer_journal import ALIAS
 from bluer_journal.help.git import help_functions as help_git
+from bluer_journal.help.git import pull_options
 from bluer_journal.help.open import help_open
 
 
@@ -12,7 +13,7 @@ def help_sync(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("dryrun,~pull,~push", mono=mono)
+    options = xtra("dryrun,~push", mono=mono)
 
     args = [
         "[--checklist 0]",
@@ -25,6 +26,7 @@ def help_sync(
             "@journal",
             "sync",
             f"[{options}]",
+            f"[{pull_options(mono=mono)}]",
         ]
         + args,
         "sync journal.",
