@@ -46,7 +46,10 @@ def reformat(
 
         page.remove_double_blanks()
 
-        if not page.save(generate=False):
+        if not page.save(
+            generate=False,
+            log=verbose,
+        ):
             return False
 
     return True

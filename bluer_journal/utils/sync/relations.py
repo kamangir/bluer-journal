@@ -72,7 +72,10 @@ def add_relations(
 
         page.remove_double_blanks()
 
-        if not page.save(generate=False):
+        if not page.save(
+            generate=False,
+            log=verbose,
+        ):
             return False
 
     return True
@@ -112,7 +115,10 @@ def find_relations(
 
     if updated_content != page.content:
         page.content = updated_content
-        if not page.save(generate=False):
+        if not page.save(
+            generate=False,
+            log=verbose,
+        ):
             return False
 
     set_of_relations: Set[str] = set()
