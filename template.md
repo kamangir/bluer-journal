@@ -10,7 +10,7 @@ pip install bluer-journal
 
 # aliases
 
-[@journal](./bluer_plugin/docs/aliases/journal.md).
+[@journal](./bluer_journal/docs/aliases/journal.md).
 
 ---
 
