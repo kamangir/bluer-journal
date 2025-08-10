@@ -19,6 +19,12 @@ function bluer_journal_git_push() {
             pushd $abcli_path_git/$BLUER_JOURNAL_REPO.wiki >/dev/null
             [[ $? -ne 0 ]] && return 1
 
+            pwd
+
+            ls
+
+            git status
+
             bluer_ai_eval dryrun=$do_dryrun \
                 git push "https://$BLUER_AI_GITHUB_TOKEN@github.com/kamangir/$BLUER_JOURNAL_REPO.wiki.git"
             [[ $? -ne 0 ]] && return 1
