@@ -15,15 +15,14 @@ function bluer_journal_git_push() {
     fi
 
     if [[ "$do_push" == 1 ]]; then
+        local message="@journal git push"
+
         if [[ "$is_token" == 1 ]]; then
             pushd $abcli_path_git/$BLUER_JOURNAL_REPO.wiki >/dev/null
             [[ $? -ne 0 ]] && return 1
 
-            pwd
-
-            ls
-
-            git status
+            git add .
+            git commit -a -m "$message"
 
             bluer_ai_eval dryrun=$do_dryrun \
                 git push "https://$BLUER_AI_GITHUB_TOKEN@github.com/kamangir/$BLUER_JOURNAL_REPO.wiki.git"
@@ -34,7 +33,7 @@ function bluer_journal_git_push() {
             bluer_ai_git \
                 $BLUER_JOURNAL_REPO.wiki \
                 push \
-                "@journal git push" \
+                "$message" \
                 ~increment_version
         fi
     fi
