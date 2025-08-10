@@ -3,7 +3,7 @@
 function bluer_journal_git_pull() {
     local options=$1
     local do_pull=$(bluer_ai_option_int "$options" pull 1)
-    local is_webhook=$(bluer_ai_option_int "$options" webhook 0)
+    local is_token=$(bluer_ai_option_int "$options" token 0)
 
     if [[ -z "$BLUER_JOURNAL_REPO" ]]; then
         bluer_ai_log_error "BLUER_JOURNAL_REPO is not set."
@@ -17,7 +17,7 @@ function bluer_journal_git_pull() {
         if [[ ! -d "$abcli_path_git/$repo_name" ]]; then
             if [[ "$abcli_is_github_workflow" == true ]]; then
                 pushd $abcli_path_git >/dev/null
-                if [[ "$is_webhook" == 1 ]]; then
+                if [[ "$is_token" == 1 ]]; then
                     bluer_ai_eval - \
                         git clone https://x-access-token:$BLUER_AI_GITHUB_TOKEN@github.com/kamangir/$repo_name.git
                 else

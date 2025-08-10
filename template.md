@@ -2,38 +2,15 @@
 
 📜 `@journal` with command access maintained in a github repo.  
 
-```mermaid
-graph LR
+## installation
 
-    journal_git_cd["@journal git cd"]
-
-    journal_git_pull["@journal git pull"]
-
-    journal_git_push["@journal git push"]
-
-    journal_open["@journal open"]
-
-    journal_sync["@journal sync"]
-
-    journal["📜 journal"]:::folder
-    git["🗄️ git"]:::folder
-
-    journal_git_cd --> git
-
-    git --> journal_git_pull
-    journal_git_pull --> journal
-
-    journal --> journal_git_push
-    journal_git_push --> git
-
-    journal_open --> git
-
-    journal --> journal_sync
-    journal_sync --> journal
-    journal_sync --> git
-
-    classDef folder fill:#999,stroke:#333,stroke-width:2px;
+```bash
+pip install bluer-journal
 ```
+
+# aliases
+
+[@journal](./bluer_journal/docs/aliases/journal.md).
 
 ---
 

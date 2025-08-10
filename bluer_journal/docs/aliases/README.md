@@ -1,0 +1,3 @@
+# aliases
+
+- [@journal](./journal.md)

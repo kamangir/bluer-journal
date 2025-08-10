@@ -19,7 +19,7 @@ def help_cd(
 
 
 def pull_options(mono: bool):
-    return xtra("~pull,webhook", mono=mono)
+    return xtra("~pull,token", mono=mono)
 
 
 def help_pull(
@@ -48,7 +48,7 @@ def push_options(
         ([] if cascade else [xtra("dryrun,", mono=mono)])
         + [xtra("~push", mono=mono)]
         + ([] if cascade else [xtra(",~sync", mono=mono)])
-        + [xtra(",webhook", mono=mono)]
+        + [xtra(",token", mono=mono)]
     )
 
 
