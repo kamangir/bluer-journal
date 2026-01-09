@@ -1,5 +1,6 @@
 from typing import List
 
+from bluer_options import env
 from bluer_options.terminal import show_usage, xtra
 from bluer_ai.help.generic import help_functions as generic_help_functions
 
@@ -13,7 +14,10 @@ def help_sync(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra("dryrun", mono=mono)
+    options = xtra(
+        "dryrun,{}".format("offline" if env.BLUER_AI_IS_ONLINE else "~offline"),
+        mono=mono,
+    )
 
     args = [
         "[--checklist 0]",
