@@ -49,7 +49,9 @@ def push_options(
         ([] if cascade else [xtra("dryrun,", mono=mono)])
         + [
             xtra(
-                "{},~push".format("offline" if env.BLUER_AI_IS_ONLINE else "~offline"),
+                "{},~push".format(
+                    "offline" if env.INTERNET_IS_NATIONAL else "~offline"
+                ),
                 mono=mono,
             )
         ]

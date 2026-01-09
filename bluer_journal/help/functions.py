@@ -15,7 +15,7 @@ def help_sync(
     mono: bool,
 ) -> str:
     options = xtra(
-        "dryrun,{}".format("offline" if env.BLUER_AI_IS_ONLINE else "~offline"),
+        "dryrun,{}".format("offline" if env.INTERNET_IS_NATIONAL else "~offline"),
         mono=mono,
     )
 
