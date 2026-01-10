@@ -5,6 +5,7 @@ from blueness.argparse.generic import sys_exit
 
 from bluer_journal import NAME
 from bluer_journal.utils.sync.functions import sync
+from bluer_journal.utils.functions import latest
 from bluer_journal.logger import logger
 
 NAME = module.name(__file__, NAME)
@@ -13,7 +14,7 @@ parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
     "task",
     type=str,
-    help="sync",
+    help="latest | sync",
 )
 parser.add_argument(
     "--checklist",
@@ -36,7 +37,10 @@ parser.add_argument(
 args = parser.parse_args()
 
 success = False
-if args.task == "sync":
+if args.task == "latest":
+    success = True
+    print(latest())
+elif args.task == "sync":
     success = sync(
         checklist=args.checklist == 1,
         relations=args.relations == 1,
