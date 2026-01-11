@@ -3,7 +3,9 @@
 function bluer_journal_sync() {
     local options=$1
     local do_dryrun=$(bluer_ai_option_int "$options" dryrun 0)
-    local do_offline=$(bluer_ai_option_int "$options" offline $INTERNET_IS_NATIONAL)
+    local do_offline=0
+    [[ "$BLUER_AI_WEB_STATUS" != "online" ]] && do_offline=1
+    do_offline=$(bluer_ai_option_int "$options" offline $do_offline)
 
     local pull_options=$2
     local do_pull=$(bluer_ai_option_int "$pull_options" pull $(bluer_ai_not $do_offline))
