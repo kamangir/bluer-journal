@@ -21,8 +21,13 @@
 @journal \
 	next \
 	[<title>] \
-	[~open]
- . create the next page in journal.
+	[~open] \
+	[~offline,~push,token] \
+	[--checklist 0] \
+	[--relations 0] \
+	[--sync 0]] \
+	[--verbose 1]
+ . create the next page.
 ```
 
 ```bash

@@ -1,12 +1,12 @@
 import os
+from typing import Tuple
 
-from bluer_options import string
 from bluer_objects import file
 from bluer_objects.env import abcli_path_git
 from bluer_journal import env
 
 
-def latest() -> str:
+def latest() -> Tuple[bool, str]:
     list_of_files = sorted(
         [
             filename
@@ -24,4 +24,7 @@ def latest() -> str:
         ]
     )
 
-    return list_of_files[-1]
+    if list_of_files:
+        return True, list_of_files[-1]
+
+    return False, ""

@@ -36,10 +36,22 @@ parser.add_argument(
     help="0 | 1",
 )
 parser.add_argument(
+    "--create",
+    type=int,
+    default=1,
+    help="0 | 1",
+)
+parser.add_argument(
     "--what",
     type=str,
     default="latest",
     help="latest | next",
+)
+parser.add_argument(
+    "--sync",
+    type=int,
+    default=1,
+    help="0 | 1",
 )
 args = parser.parse_args()
 
@@ -47,12 +59,23 @@ success = False
 if args.task == "get":
     success = True
     if args.what == "latest":
-        print(latest())
+        success, output = latest()
     elif args.what == "next":
-        print(next())
+        success, output = next(
+            create=args.create == 1,
+        )
+
+        if success and args.sync == 1:
+            success = sync(
+                checklist=args.checklist == 1,
+                relations=args.relations == 1,
+                verbose=args.verbose == 1,
+            )
     else:
-        print("not-found")
         success = False
+        output = "not-found"
+
+    print(output)
 elif args.task == "sync":
     success = sync(
         checklist=args.checklist == 1,
