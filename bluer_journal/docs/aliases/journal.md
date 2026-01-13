@@ -1,7 +1,5 @@
 # aliases: journal
 
-## git
-
 ```bash
 @journal \
 	git \
@@ -19,7 +17,13 @@
  . journal -> git.
 ```
 
-## open
+```bash
+@journal \
+	next \
+	[<title>] \
+	[~open]
+ . create the next page in journal.
+```
 
 ```bash
 @journal \
@@ -27,8 +31,6 @@
 	[home | <YYYY-MM-DD>]
  . open journal.
 ```
-
-## sync
 
 ```bash
 @journal \

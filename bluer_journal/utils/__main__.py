@@ -5,7 +5,8 @@ from blueness.argparse.generic import sys_exit
 
 from bluer_journal import NAME
 from bluer_journal.utils.sync.functions import sync
-from bluer_journal.utils.functions import latest
+from bluer_journal.utils.latest import latest
+from bluer_journal.utils.next import next
 from bluer_journal.logger import logger
 
 NAME = module.name(__file__, NAME)
@@ -14,7 +15,7 @@ parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
     "task",
     type=str,
-    help="latest | sync",
+    help="get | sync",
 )
 parser.add_argument(
     "--checklist",
@@ -32,14 +33,26 @@ parser.add_argument(
     "--verbose",
     type=int,
     default=0,
-    help="0 |1",
+    help="0 | 1",
+)
+parser.add_argument(
+    "--what",
+    type=str,
+    default="latest",
+    help="latest | next",
 )
 args = parser.parse_args()
 
 success = False
-if args.task == "latest":
+if args.task == "get":
     success = True
-    print(latest())
+    if args.what == "latest":
+        print(latest())
+    elif args.what == "next":
+        print(next())
+    else:
+        print("not-found")
+        success = False
 elif args.task == "sync":
     success = sync(
         checklist=args.checklist == 1,
