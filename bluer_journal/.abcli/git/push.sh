@@ -37,7 +37,7 @@ function bluer_journal_git_push() {
                 $BLUER_JOURNAL_REPO.wiki \
                 push \
                 "$message" \
-                ~increment_version,offline=$do_offline
+                ~increment_version,offline=$do_offline,~test
         fi
     fi
 }

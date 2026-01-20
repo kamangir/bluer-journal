@@ -66,7 +66,7 @@ def next(
     ]
     fire_started: bool = False
     for line in page_content:
-        if "🔥" in line:
+        if any(marker in line for marker in "🔥🎰"):
             fire_started = True
 
         if fire_started:
