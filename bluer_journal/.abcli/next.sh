@@ -9,9 +9,8 @@ function bluer_journal_next() {
 
     local options=$2
     local do_open=$(bluer_ai_option_int "$options" open 1)
-    if [[ "$do_open" == 1 ]]; then
-        bluer_journal_open $page
-    fi
+    [[ "$do_open" == 1 ]] &&
+        bluer_journal_open page=$page
 
     local push_options=$3
     local do_push=$(bluer_ai_option_int "$push_options" push 1)

@@ -7,11 +7,13 @@ def help_open(
     tokens: List[str],
     mono: bool,
 ) -> str:
+    options = "code|web,page=latest|<page-name>"
+
     return show_usage(
         [
             "@journal",
             "open",
-            "[home | <YYYY-MM-DD>]",
+            f"[{options}]",
         ],
         "open journal.",
         mono=mono,
