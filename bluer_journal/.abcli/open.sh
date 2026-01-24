@@ -3,7 +3,7 @@
 function bluer_journal_open() {
     local options=$1
 
-    local page$(bluer_ai_option "$options" page latest)
+    local page=$(bluer_ai_option "$options" page latest)
     [[ "$page" == "latest" ]] &&
         page=$(python3 -m bluer_journal.utils get --what latest)
 
