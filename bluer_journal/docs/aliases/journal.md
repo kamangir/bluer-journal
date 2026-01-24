@@ -1,7 +1,5 @@
 # aliases: journal
 
-## git
-
 ```bash
 @journal \
 	git \
@@ -15,11 +13,22 @@
 @journal \
 	git \
 	push \
-	[dryrun,~push,~sync,token]
+	[dryrun,offline,~push,~sync,token]
  . journal -> git.
 ```
 
-## open
+```bash
+@journal \
+	next \
+	[<title>] \
+	[~open] \
+	[offline,~push,token] \
+	[--checklist 0] \
+	[--relations 0] \
+	[--sync 0]] \
+	[--verbose 1]
+ . create the next page.
+```
 
 ```bash
 @journal \
@@ -28,14 +37,12 @@
  . open journal.
 ```
 
-## sync
-
 ```bash
 @journal \
 	sync \
-	[dryrun] \
+	[dryrun,offline] \
 	[~pull,token] \
-	[~push,token] \
+	[offline,~push,token] \
 	[--checklist 0] \
 	[--relations 0] \
 	[--verbose 1]

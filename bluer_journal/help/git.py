@@ -1,6 +1,7 @@
 from typing import List
 
 from bluer_options.terminal import show_usage, xtra
+from bluer_options import env
 
 
 def help_cd(
@@ -46,7 +47,14 @@ def push_options(
 ):
     return "".join(
         ([] if cascade else [xtra("dryrun,", mono=mono)])
-        + [xtra("~push", mono=mono)]
+        + [
+            xtra(
+                "{},~push".format(
+                    "offline" if env.BLUER_AI_WEB_STATUS == "online" else "~offline"
+                ),
+                mono=mono,
+            )
+        ]
         + ([] if cascade else [xtra(",~sync", mono=mono)])
         + [xtra(",token", mono=mono)]
     )
