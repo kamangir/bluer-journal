@@ -33,7 +33,7 @@
 ```bash
 @journal \
 	open \
-	[home | <YYYY-MM-DD>]
+	[code|web,page=latest|<page-name>]
  . open journal.
 ```
 

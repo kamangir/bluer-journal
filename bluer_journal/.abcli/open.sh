@@ -1,22 +1,30 @@
 #! /usr/bin/env bash
 
 function bluer_journal_open() {
-    local page=${1:-latest}
+    local options=$1
 
+    local page$(bluer_ai_option "$options" page latest)
     [[ "$page" == "latest" ]] &&
         page=$(python3 -m bluer_journal.utils get --what latest)
 
-    if [[ "$BLUER_AI_WEB_STATUS" == "online" ]]; then
+    local where=:"web"
+    [[ "$BLUER_AI_WEB_STATUS" == "online" ]] &&
+        where="code"
+    where=$(bluer_ai_option "$options" where $where)
+
+    if [[ "$where" == "web" ]]; then
         local url="https://github.com/kamangir/$BLUER_JOURNAL_REPO/wiki"
-        [[ "$page" != "home" ]] &&
-            url="$url/$page"
+        url="$url/$page"
 
         bluer_ai_browse $url
-    else
+    elif [[ "$where" == "code" ]]; then
         local filename=$abcli_path_git/$BLUER_JOURNAL_REPO.wiki
         [[ "$page" != "home" ]] &&
             filename=$filename/$page.md
 
         bluer_ai_code $filename
+    else
+        bluer_ai_log_error "where=$where not found."
+        return 1
     fi
 }
