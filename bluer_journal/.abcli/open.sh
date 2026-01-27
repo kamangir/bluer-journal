@@ -7,10 +7,7 @@ function bluer_journal_open() {
     [[ "$page" == "latest" ]] &&
         page=$(python3 -m bluer_journal.utils get --what latest)
 
-    local where="web"
-    [[ "$BLUER_AI_WEB_STATUS" == "online" ]] &&
-        where="code"
-    where=$(bluer_ai_option_choice "$options" code,web $where)
+    local where=$(bluer_ai_option_choice "$options" code,web code)
 
     if [[ "$where" == "web" ]]; then
         local url="https://github.com/kamangir/$BLUER_JOURNAL_REPO/wiki"

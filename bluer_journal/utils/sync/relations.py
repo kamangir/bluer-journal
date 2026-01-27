@@ -22,6 +22,7 @@ def add_relations(
 ) -> bool:
     logger.info(f"{NAME}.add_relations ...")
 
+    YYYY_MM_DD = re.compile(r"^\d{4}-\d{2}-\d{2}$")
     dict_of_relations_inverse: Dict[str, List[str]] = {}
     for related, list_of_relations in tqdm(dict_of_relations.items()):
         for relation in list_of_relations:
@@ -29,13 +30,17 @@ def add_relations(
             if related in dict_of_relations.get(relation, []):
                 continue
 
+            page_title = relation.replace(" ", "-")
+
             if not file.exists(
                 JournalPage(
-                    title=relation.replace(" ", "-"),
+                    title=page_title,
                     load=False,
                     verbose=verbose,
                 ).filename
             ):
+                if not YYYY_MM_DD.match(page_title):
+                    logger.warning(f"relation not found: {page_title}")
                 continue
 
             if relation not in dict_of_relations_inverse:
