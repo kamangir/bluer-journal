@@ -3,7 +3,7 @@
 function bluer_journal_git_push() {
     local options=$1
     local do_dryrun=$(bluer_ai_option_int "$options" dryrun 0)
-    local do_offline=$(bluer_ai_not $BLUER_AI_INTERNET_OUTSIDE_IS_ACCESSIBLE)
+    local do_offline=$(bluer_ai_not $BLUER_AI_WEB_IS_ACCESSIBLE)
     do_offline=$(bluer_ai_option_int "$options" offline $do_offline)
     local do_push=$(bluer_ai_option_int "$options" push 1)
     local do_sync=$(bluer_ai_option_int "$options" sync 1)
