@@ -1,7 +1,7 @@
 from typing import List
 
 from bluer_options.terminal import show_usage, xtra
-from bluer_options.env import BLUER_AI_INTERNET_OUTSIDE_IS_ACCESSIBLE
+from bluer_options.env import BLUER_AI_WEB_IS_ACCESSIBLE
 
 
 def help_cd(
@@ -50,7 +50,7 @@ def push_options(
         + [
             xtra(
                 "{},~push".format(
-                    "offline" if BLUER_AI_INTERNET_OUTSIDE_IS_ACCESSIBLE else "~offline"
+                    "offline" if BLUER_AI_WEB_IS_ACCESSIBLE else "~offline"
                 ),
                 mono=mono,
             )

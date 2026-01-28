@@ -1,7 +1,7 @@
 from typing import List
 
 from bluer_options.terminal import show_usage, xtra
-from bluer_options.env import BLUER_AI_INTERNET_OUTSIDE_IS_ACCESSIBLE
+from bluer_options.env import BLUER_AI_WEB_IS_ACCESSIBLE
 
 from bluer_journal import ALIAS
 from bluer_journal.help.git import help_functions as help_git
@@ -19,9 +19,7 @@ def help_sync(
     mono: bool,
 ) -> str:
     options = xtra(
-        "dryrun,{}".format(
-            "offline" if BLUER_AI_INTERNET_OUTSIDE_IS_ACCESSIBLE else "~offline"
-        ),
+        "dryrun,{}".format("offline" if BLUER_AI_WEB_IS_ACCESSIBLE else "~offline"),
         mono=mono,
     )
 
