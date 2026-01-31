@@ -60,7 +60,10 @@ def next(
         return False, next_page
 
     latest_page_content_updated: List[str] = []
-    next_page_content: List[str] = []
+    next_page_content: List[str] = [
+        "---",
+        "",
+    ]
     fire_started: bool = False
     for line in page_content:
         if any(marker in line for marker in "🔥🎰"):
