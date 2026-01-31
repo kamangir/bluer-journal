@@ -25,7 +25,16 @@ def reformat(
         )
 
         page.content = (
-            sorted(
+            [
+                line
+                for line in page.content
+                if not re.fullmatch(
+                    r"- \[\[.+?\]\]",
+                    line,
+                )
+            ]
+            + [""]
+            + sorted(
                 [
                     line
                     for line in page.content
@@ -35,15 +44,6 @@ def reformat(
                     )
                 ]
             )
-            + [""]
-            + [
-                line
-                for line in page.content
-                if not re.fullmatch(
-                    r"- \[\[.+?\]\]",
-                    line,
-                )
-            ]
         )
 
         page.remove_double_blanks()
