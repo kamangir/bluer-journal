@@ -42,7 +42,7 @@ def reformat(
             [
                 "",
                 "<details>",
-                f"<summary>references</summary>",
+                "<summary>references</summary>",
                 "",
             ]
             + sorted(
