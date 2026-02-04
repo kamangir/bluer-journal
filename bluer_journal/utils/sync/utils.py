@@ -24,8 +24,28 @@ def reformat(
             verbose=verbose,
         )
 
+        page.content = [
+            line
+            for line in page.content
+            if not any(
+                thing in line
+                for thing in [
+                    "<details>",
+                    "<summary>",
+                    "</summary>",
+                    "</details>",
+                ]
+            )
+        ]
+
         page.content = (
-            sorted(
+            [
+                "",
+                "<details>",
+                f"<summary>references</summary>",
+                "",
+            ]
+            + sorted(
                 [
                     line
                     for line in page.content
@@ -35,7 +55,11 @@ def reformat(
                     )
                 ]
             )
-            + [""]
+            + [
+                "",
+                "</details>",
+                "",
+            ]
             + [
                 line
                 for line in page.content
