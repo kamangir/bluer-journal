@@ -40,10 +40,8 @@ def reformat(
 
         page.content = (
             [
-                "",
                 "<details>",
                 "<summary>references</summary>",
-                "",
             ]
             + sorted(
                 [
@@ -56,7 +54,6 @@ def reformat(
                 ]
             )
             + [
-                "",
                 "</details>",
                 "",
             ]
