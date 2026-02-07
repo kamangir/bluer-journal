@@ -13,7 +13,7 @@
 @journal \
 	git \
 	push \
-	[dryrun,~offline,~push,~sync,token]
+	[dryrun,offline,~push,~sync,token]
  . journal -> git.
 ```
 
@@ -22,7 +22,7 @@
 	next \
 	[<title>] \
 	[~open] \
-	[~offline,~push,token] \
+	[offline,~push,token] \
 	[--checklist 0] \
 	[--relations 0] \
 	[--sync 0]] \
@@ -40,9 +40,9 @@
 ```bash
 @journal \
 	sync \
-	[dryrun,~offline] \
+	[dryrun,offline] \
 	[~pull,token] \
-	[~offline,~push,token] \
+	[offline,~push,token] \
 	[--checklist 0] \
 	[--relations 0] \
 	[--verbose 1]
