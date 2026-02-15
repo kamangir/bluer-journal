@@ -7,9 +7,10 @@ from bluer_journal import NAME, VERSION, ICON, REPO_NAME
 from bluer_journal.help.functions import help_functions
 
 
-def build():
+def build(args):
     return all(
         README.build(
+            args=args,
             path=os.path.join(file.path(__file__), readme["path"]),
             ICON=ICON,
             NAME=NAME,
