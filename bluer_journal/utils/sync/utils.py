@@ -34,6 +34,7 @@ def reformat(
                     "<summary>",
                     "</summary>",
                     "</details>",
+                    "[[declaration]]",
                 ]
             )
         ]
@@ -55,6 +56,8 @@ def reformat(
             )
             + [
                 "</details>",
+                "",
+                "[[declaration]] 📜",
                 "",
             ]
             + [
