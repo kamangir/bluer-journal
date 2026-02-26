@@ -15,7 +15,7 @@ function bluer_journal_open() {
 
         bluer_ai_browse $url
     elif [[ "$where" == "code" ]]; then
-        local filename=$abcli_path_git/$BLUER_JOURNAL_REPO.wiki
+        local filename=$abcli_path_git/$BLUER_JOURNAL_REPO/wiki
         [[ "$page" != "home" ]] &&
             filename=$filename/$page.md
 

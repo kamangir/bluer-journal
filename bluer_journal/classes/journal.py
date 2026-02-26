@@ -44,7 +44,8 @@ class Journal:
     def path(self):
         return os.path.join(
             abcli_path_git,
-            f"{BLUER_JOURNAL_REPO}.wiki",
+            f"{BLUER_JOURNAL_REPO}",
+            "wiki",
         )
 
 

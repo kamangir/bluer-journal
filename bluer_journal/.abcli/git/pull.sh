@@ -10,34 +10,29 @@ function bluer_journal_git_pull() {
         return 1
     fi
 
-    local repo_name
-    for repo_name in \
-        $BLUER_JOURNAL_REPO \
-        $BLUER_JOURNAL_REPO.wiki; do
-        if [[ ! -d "$abcli_path_git/$repo_name" ]]; then
-            if [[ "$abcli_is_github_workflow" == true ]]; then
-                pushd $abcli_path_git >/dev/null
-                if [[ "$is_token" == 1 ]]; then
-                    bluer_ai_eval - \
-                        git clone https://x-access-token:$BLUER_AI_GITHUB_TOKEN@github.com/kamangir/$repo_name.git
-                else
-                    bluer_ai_eval - \
-                        git clone https://github.com/kamangir/$repo_name.git
-                fi
-                [[ $? -ne 0 ]] && return 1
-                popd >/dev/null
+    if [[ ! -d "$abcli_path_git/$BLUER_JOURNAL_REPO" ]]; then
+        if [[ "$abcli_is_github_workflow" == true ]]; then
+            pushd $abcli_path_git >/dev/null
+            if [[ "$is_token" == 1 ]]; then
+                bluer_ai_eval - \
+                    git clone https://x-access-token:$BLUER_AI_GITHUB_TOKEN@github.com/kamangir/$BLUER_JOURNAL_REPO.git
             else
-                bluer_ai_git_clone $repo_name
-                [[ $? -ne 0 ]] && return 1
+                bluer_ai_eval - \
+                    git clone https://github.com/kamangir/$BLUER_JOURNAL_REPO.git
             fi
+            [[ $? -ne 0 ]] && return 1
+            popd >/dev/null
+        else
+            bluer_ai_git_clone $BLUER_JOURNAL_REPO
+            [[ $? -ne 0 ]] && return 1
         fi
-    done
+    fi
 
     [[ "$do_pull" == 0 ]] &&
         return 0
 
     bluer_ai_git \
-        $BLUER_JOURNAL_REPO.wiki \
+        $BLUER_JOURNAL_REPO \
         pull \
         ~all
 }
