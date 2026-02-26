@@ -15,7 +15,8 @@ def latest() -> Tuple[bool, str]:
                 for filename in file.list_of(
                     os.path.join(
                         abcli_path_git,
-                        f"{env.BLUER_JOURNAL_REPO}.wiki",
+                        env.BLUER_JOURNAL_REPO,
+                        "wiki",
                         "*.md",
                     )
                 )

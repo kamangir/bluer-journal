@@ -27,7 +27,8 @@ def next(
 
         next_filename = os.path.join(
             abcli_path_git,
-            f"{env.BLUER_JOURNAL_REPO}.wiki",
+            env.BLUER_JOURNAL_REPO,
+            "wiki",
             f"{next_page}.md",
         )
 
@@ -48,7 +49,8 @@ def next(
     logger.info(f"processing latest page: {latest_page}")
     latest_filename = os.path.join(
         abcli_path_git,
-        f"{env.BLUER_JOURNAL_REPO}.wiki",
+        env.BLUER_JOURNAL_REPO,
+        "wiki",
         f"{latest_page}.md",
     )
 
