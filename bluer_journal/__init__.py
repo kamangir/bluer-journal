@@ -4,7 +4,7 @@ ICON = "📜"
 
 DESCRIPTION = f"{ICON} A journal for the age of AI."
 
-VERSION = "5.159.1"
+VERSION = "6.2.1"
 
 REPO_NAME = "bluer-journal"
 
