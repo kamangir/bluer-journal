@@ -75,7 +75,7 @@ class JournalPage:
     ) -> bool:
         success, self.content = file.load_text(
             self.filename,
-            ignore_error=True,
+            ignore_error=not self.verbose,
             log=self.verbose,
         )
         if not success:

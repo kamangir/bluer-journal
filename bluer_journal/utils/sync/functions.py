@@ -14,7 +14,12 @@ def sync(
     relations: bool = True,
     verbose: bool = False,
 ) -> bool:
-    logger.info(f"{NAME}.sync ...")
+    logger.info(
+        "{}.sync... {}".format(
+            NAME,
+            " verbose" if verbose else "",
+        )
+    )
 
     if checklist:
         if not sync_checklist(verbose=verbose):
