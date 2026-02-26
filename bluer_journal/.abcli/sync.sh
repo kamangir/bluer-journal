@@ -23,7 +23,7 @@ function bluer_journal_sync() {
     [[ $? -ne 0 ]] && return 1
 
     bluer_ai_git \
-        $BLUER_JOURNAL_REPO.wiki \
+        $BLUER_JOURNAL_REPO \
         --no-pager diff
     [[ $? -ne 0 ]] && return 1
 

@@ -1,6 +1,6 @@
 # 📜 bluer-journal
 
-📜 `@journal` with command access maintained in a github repo.  
+📜 `@journal` with command access maintained in a github repo, example: [test journal](https://github.com/kamangir/test-journal).
 
 ## installation
 

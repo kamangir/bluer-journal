@@ -10,12 +10,10 @@ function bluer_journal_open() {
     local where=$(bluer_ai_option_choice "$options" code,web code)
 
     if [[ "$where" == "web" ]]; then
-        local url="https://github.com/kamangir/$BLUER_JOURNAL_REPO/wiki"
-        url="$url/$page"
-
-        bluer_ai_browse $url
+        bluer_ai_browse \
+            "https://github.com/kamangir/$BLUER_JOURNAL_REPO/blob/main/wiki/$page.md"
     elif [[ "$where" == "code" ]]; then
-        local filename=$abcli_path_git/$BLUER_JOURNAL_REPO.wiki
+        local filename=$abcli_path_git/$BLUER_JOURNAL_REPO/wiki
         [[ "$page" != "home" ]] &&
             filename=$filename/$page.md
 
