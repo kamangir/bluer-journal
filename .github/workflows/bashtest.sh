@@ -1,8 +1,8 @@
 #! /usr/bin/env bash
 
 function bashtest() {
-    set -x # verbose-mode
-    touch /home/runner/work/bluer-journal/verbose
+    # set -x # verbose-mode
+    # touch /home/runner/work/bluer-journal/verbose
 
     local plugin_name=$1
 
